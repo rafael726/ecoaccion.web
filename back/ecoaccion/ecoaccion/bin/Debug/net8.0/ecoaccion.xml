@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ecoaccion</name>
+    </assembly>
+    <members>
+        <member name="M:ecoaccion.Api.Controllers.Auth.UserController.GetClasificacion">
+            <summary>
+            Obtiene la clasificación de todos los usuarios.
+            </summary>
+            <returns>Lista de usuarios con sus puntos y desafíos cumplidos.</returns>
+        </member>
+        <member name="M:ecoaccion.Api.Controllers.Desafios.DesafioController.Add(ecoaccion.Core.DTOs.Desafio.DesafioInsertDto)">
+            <summary>
+            Ceacion de desafios, permitido solo para usuarios con rol de admin.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ecoaccion.Api.Controllers.Desafios.DesafioController.UploadImage(ecoaccion.Core.DTOs.Desafio.InsertDesafioImageDto)">
+            <summary>
+             Carga una imagen de comprobacion para el desafio.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ecoaccion.Api.Controllers.Desafios.DesafioController.Search(System.String)">
+            <summary>
+             Busqueda de desafios, la query titulo o meta.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ecoaccion.Api.Controllers.Participaciones.ParticipacionController.MarcarProgreso(ecoaccion.Core.DTOs.Participaciones.ParticipacionProgresoUpdateDto)">
+            <summary>
+            Actualiza la participacion, el valor del campo progreso deberá ser igual a "completado" si se quiere marcar como finalizada 
+            </summary>
+            <returns>Retorna status code 200 .</returns>
+        </member>
+        <member name="M:ecoaccion.Api.Controllers.Participaciones.ParticipacionController.CrearParticipacion(ecoaccion.Core.DTOs.Participaciones.ParticipicacionInsertDto)">
+            <summary>
+            El usuario puede crear una nueva evidencia de participacion, el progeso se puede iniciar en cuanquier valor string diferente de completado
+            </summary>
+            <returns>Retorna status code 200 .</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,157 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|c:\\users\\david\\onedrive\\escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\api\\controllers\\participaciones\\participacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|solutionrelative:ecoaccion\\api\\controllers\\participaciones\\participacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|c:\\users\\david\\onedrive\\escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\application\\services\\participaciones\\participacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|solutionrelative:ecoaccion\\application\\services\\participaciones\\participacionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|c:\\users\\david\\onedrive\\escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\infrastructure\\repositories\\participacionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|solutionrelative:ecoaccion\\infrastructure\\repositories\\participacionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|c:\\users\\david\\onedrive\\escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\core\\dtos\\participaciones\\participaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|solutionrelative:ecoaccion\\core\\dtos\\participaciones\\participaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|c:\\users\\david\\onedrive\\escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\application\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|solutionrelative:ecoaccion\\application\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|c:\\users\\david\\onedrive\\escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\core\\entities\\participacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|solutionrelative:ecoaccion\\core\\entities\\participacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|c:\\users\\david\\onedrive\\escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\application\\services\\user\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|solutionrelative:ecoaccion\\application\\services\\user\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 326,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ParticipacionController.cs",
+              "DocumentMoniker": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Api\\Controllers\\Participaciones\\ParticipacionController.cs",
+              "RelativeDocumentMoniker": "ecoaccion\\Api\\Controllers\\Participaciones\\ParticipacionController.cs",
+              "ToolTip": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Api\\Controllers\\Participaciones\\ParticipacionController.cs",
+              "RelativeToolTip": "ecoaccion\\Api\\Controllers\\Participaciones\\ParticipacionController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwDQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T05:17:07.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ParticipacionDto.cs",
+              "DocumentMoniker": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Core\\DTOs\\Participaciones\\ParticipacionDto.cs",
+              "RelativeDocumentMoniker": "ecoaccion\\Core\\DTOs\\Participaciones\\ParticipacionDto.cs",
+              "ToolTip": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Core\\DTOs\\Participaciones\\ParticipacionDto.cs",
+              "RelativeToolTip": "ecoaccion\\Core\\DTOs\\Participaciones\\ParticipacionDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T05:00:28.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ParticipacionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Infrastructure\\Repositories\\ParticipacionRepository.cs",
+              "RelativeDocumentMoniker": "ecoaccion\\Infrastructure\\Repositories\\ParticipacionRepository.cs",
+              "ToolTip": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Infrastructure\\Repositories\\ParticipacionRepository.cs",
+              "RelativeToolTip": "ecoaccion\\Infrastructure\\Repositories\\ParticipacionRepository.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAvwDUAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T04:58:38.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ParticipacionService.cs",
+              "DocumentMoniker": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Application\\Services\\Participaciones\\ParticipacionService.cs",
+              "RelativeDocumentMoniker": "ecoaccion\\Application\\Services\\Participaciones\\ParticipacionService.cs",
+              "ToolTip": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Application\\Services\\Participaciones\\ParticipacionService.cs",
+              "RelativeToolTip": "ecoaccion\\Application\\Services\\Participaciones\\ParticipacionService.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAswFwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T04:58:03.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Application\\Mapper\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "ecoaccion\\Application\\Mapper\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Application\\Mapper\\MappingProfile.cs",
+              "RelativeToolTip": "ecoaccion\\Application\\Mapper\\MappingProfile.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAwwAwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T05:01:14.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Participacion.cs",
+              "DocumentMoniker": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Core\\Entities\\Participacion.cs",
+              "RelativeDocumentMoniker": "ecoaccion\\Core\\Entities\\Participacion.cs",
+              "ToolTip": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Core\\Entities\\Participacion.cs",
+              "RelativeToolTip": "ecoaccion\\Core\\Entities\\Participacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T05:00:48.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Application\\Services\\User\\UserService.cs",
+              "RelativeDocumentMoniker": "ecoaccion\\Application\\Services\\User\\UserService.cs",
+              "ToolTip": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\ecoaccion\\Application\\Services\\User\\UserService.cs",
+              "RelativeToolTip": "ecoaccion\\Application\\Services\\User\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T04:57:51.674Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 86,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

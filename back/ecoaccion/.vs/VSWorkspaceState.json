@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ecoaccion",
+    "\\ecoaccion\\Api",
+    "\\ecoaccion\\Api\\Controllers",
+    "\\ecoaccion\\Api\\Controllers\\Auth"
+  ],
+  "SelectedNode": "\\ecoaccion\\Api\\Controllers\\Auth\\UserController.cs",
+  "PreviewInSolutionExplorer": false
+}
