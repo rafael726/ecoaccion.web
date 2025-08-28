@@ -52,9 +52,19 @@ namespace ecoaccion.Application.Services.User
             _userRepository.SaveChangesAsync();
             return true;
         }
-        
-        public async Task<IEnumerable<Usuario>> GetAll() 
-            => await _userRepository.GetAll();
+
+        public async Task<IEnumerable<UserDto>> GetAll()
+        { 
+            var users = await _userRepository.GetAll();
+            var usersDto = users.Select(u => new UserDto
+            {
+                Correo = u.Correo,
+                IdUsuario = u.IdUsuario,
+                Puntos = u.Puntos,
+                NombreUsuario=u.NombreUsuario,
+            });
+            return usersDto;
+        }
 
         public async Task<UserDto> GetById( int id ) 
             => await _userRepository.GetById(id);

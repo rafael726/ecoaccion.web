@@ -52,9 +52,15 @@ namespace ecoaccion.Application.Services.Admin
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<AdminDto>> GetAll<T>()
-        {
-            throw new NotImplementedException();
+        public async Task<IEnumerable<AdminDto>> GetAll() {
+            var admins = await _adminRepository.GetAll();
+            var adminDto = admins.Select(a => new AdminDto
+            {
+                IdAdmin = a.IdAdmin,
+                NombreUsuario = a.NombreUsuario,
+                Correo = a.Correo
+            });
+            return adminDto;
         }
 
         public Task<AdminDto> GetById( object id )

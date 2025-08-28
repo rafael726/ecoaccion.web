@@ -6,5 +6,6 @@ namespace ecoaccion.Core.Interfaces.Repositories
     public interface IAdminRepository:IBaseRepository<Administrador>
     {
         Task AddAdminAsync( Administrador admin );
+        Task<IEnumerable<Administrador>> GetAll();
     }
 }

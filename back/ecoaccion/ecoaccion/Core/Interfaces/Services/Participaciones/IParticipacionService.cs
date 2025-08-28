@@ -14,5 +14,6 @@ namespace ecoaccion.Core.Interfaces.Services.Participaciones
         public bool Validate( int id );
         string GetImageMimeType( byte[] imageData );
         bool Validate( ParticipicacionInsertDto dto );
+        Task<IEnumerable<ParticipacionDto>> GetAll();
     }
 }

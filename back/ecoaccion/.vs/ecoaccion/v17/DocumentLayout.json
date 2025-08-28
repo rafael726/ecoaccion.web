@@ -1,12 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\ecoaccion.web\\ecoaccion.web\\back\\ecoaccion\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|d:\\ecoaccion.web\\ecoaccion.web\\back\\ecoaccion\\ecoaccion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{688756F2-5A45-4AE1-913D-555DCCD021FA}|ecoaccion\\ecoaccion.csproj|solutionrelative:ecoaccion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\david\\OneDrive\\Escritorio\\ecoaccion\\back\\ecoaccion\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,20 +9,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 326,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\ecoaccion.web\\ecoaccion.web\\back\\ecoaccion\\ecoaccion\\appsettings.json",
-              "RelativeDocumentMoniker": "ecoaccion\\appsettings.json",
-              "ToolTip": "D:\\ecoaccion.web\\ecoaccion.web\\back\\ecoaccion\\ecoaccion\\appsettings.json",
-              "RelativeToolTip": "ecoaccion\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-28T00:17:08.363Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 86,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }

@@ -106,5 +106,13 @@ namespace ecoaccion.Api.Controllers.Auth
             var clasificacion = await _userService.GetClasificacionUsuariosAsync();
             return Ok(clasificacion);
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<UserDto>>> Get()
+        {
+            var users = await _userService.GetAll();
+            return Ok(users);
+        }
     }
 }

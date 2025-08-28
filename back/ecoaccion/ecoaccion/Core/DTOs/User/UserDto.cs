@@ -7,6 +7,6 @@ namespace ecoaccion.Core.DTOs.User
         public string NombreUsuario { get; set; }
         public string Correo { get; set; }
         public int IdUsuario { get; set; }
-        public int Puntos { get; set; }
+        public int? Puntos { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace ecoaccion.Infrastructure.Repositories
         }
 
         public async Task<IEnumerable<Usuario>> GetAll()     
-            => await _context.Usuarios.ToListAsync();
+            => await _context.Usuarios.Include(p => p.Participaciones).ToListAsync();
     
        
         

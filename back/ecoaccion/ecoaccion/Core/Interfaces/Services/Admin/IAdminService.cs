@@ -10,7 +10,7 @@ namespace ecoaccion.Core.Interfaces.Services.Admin
         Task<bool> Delete( object id );
         Task<AdminUpdateDto> Update( AdminUpdateDto adminInsertDto );
         Task<AdminDto> GetById( object id );
-        Task<IEnumerable<AdminDto>> GetAll<T>();
+        Task<IEnumerable<AdminDto>> GetAll();
         bool Validate( AdminInsertDto adminInsertDto );
         bool Validate( LoginUserDto loginUserDto );
         string Login( LoginUserDto loginUserDto );

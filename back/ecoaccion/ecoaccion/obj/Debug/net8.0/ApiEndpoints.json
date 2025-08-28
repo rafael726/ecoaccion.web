@@ -1,6 +1,26 @@
 [
   {
     "ContainingType": "ecoaccion.Api.Controllers.Auth.AdminController",
+    "Method": "Get",
+    "RelativePath": "api/Admin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ecoaccion.Core.DTOs.Admin.AdminDto, ecoaccion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ecoaccion.Api.Controllers.Auth.AdminController",
     "Method": "Add",
     "RelativePath": "api/Admin",
     "HttpMethod": "POST",
@@ -313,6 +333,26 @@
   },
   {
     "ContainingType": "ecoaccion.Api.Controllers.Participaciones.ParticipacionController",
+    "Method": "Get",
+    "RelativePath": "api/Participacion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ecoaccion.Core.DTOs.Participaciones.ParticipacionDto, ecoaccion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ecoaccion.Api.Controllers.Participaciones.ParticipacionController",
     "Method": "GetImage",
     "RelativePath": "api/Participacion/{id}/image",
     "HttpMethod": "GET",
@@ -437,6 +477,26 @@
     "ReturnTypes": [
       {
         "Type": "ecoaccion.Core.DTOs.User.UserDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ecoaccion.Api.Controllers.Auth.UserController",
+    "Method": "Get",
+    "RelativePath": "api/User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ecoaccion.Core.DTOs.User.UserDto, ecoaccion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
