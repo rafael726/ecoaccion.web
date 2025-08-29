@@ -1,0 +1,7 @@
+.bg-gradient-ecoaccion {
+  background: linear-gradient(180deg, #28a745 10%, #1e7e34 100%) !important;
+}
+
+.bg-ecoaccion {
+  background: linear-gradient(90deg, #28a745 10%, #1e7e34 100%) !important;
+}

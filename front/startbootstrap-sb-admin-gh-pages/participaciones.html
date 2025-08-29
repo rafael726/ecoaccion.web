@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mis Participaciones - EcoAcción</title>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700,900" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon"><i class="fas fa-leaf"></i></div>
+            <div class="sidebar-brand-text mx-3">EcoAcción</div>
+        </a>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-fw fa-home"></i><span>Inicio</span></a></li>
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">Participación</div>
+        <li class="nav-item"><a class="nav-link" href="desafios.html"><i class="fas fa-fw fa-seedling"></i><span>Desafíos Disponibles</span></a></li>
+        <li class="nav-item active"><a class="nav-link" href="participaciones.html"><i class="fas fa-fw fa-check"></i><span>Mis Participaciones</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="ranking.html"><i class="fas fa-fw fa-trophy"></i><span>Ranking</span></a></li>
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">Administración</div>
+        <li class="nav-item"><a class="nav-link" href="gestion_usuarios.html"><i class="fas fa-fw fa-users-cog"></i><span>Gestión de Usuarios</span></a></li>
+        <hr class="sidebar-divider d-none d-md-block">
+    </ul>
+
+    <!-- Contenido principal -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nombreUsuario">Usuario</span>
+                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="container-fluid">
+                <h1 class="h3 mb-4 text-gray-800">Mis Participaciones</h1>
+
+                <!-- Cards de ejemplo -->
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Participaciones Activas</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Participaciones Completadas</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Puntos Totales</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">150</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de participaciones -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Detalle de Participaciones</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Desafío</th>
+                                        <th>Fecha Participación</th>
+                                        <th>Puntos Obtenidos</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Recolecta Botellas</td>
+                                        <td>2025-08-25</td>
+                                        <td>50</td>
+                                        <td>Activo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Plantar Árboles</td>
+                                        <td>2025-08-20</td>
+                                        <td>100</td>
+                                        <td>Completado</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto text-center">
+                <span>EcoAcción &copy; 2025</span>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="js/sb-admin-2.min.js"></script>
+<script>
+    const usuario = JSON.parse(localStorage.getItem("usuario")) || { nombre: "Invitado" };
+    document.getElementById("nombreUsuario").innerText = usuario.nombre;
+</script>
+</body>
+</html>
