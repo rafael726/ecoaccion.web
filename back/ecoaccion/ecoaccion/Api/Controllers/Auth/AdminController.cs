@@ -4,6 +4,7 @@ using ecoaccion.Core.Entities;
 using ecoaccion.Core.Interfaces.Services.Admin;
 using ecoaccion.Core.Interfaces.Services.User;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,17 +16,25 @@ namespace ecoaccion.Api.Controllers.Auth
     {
         private readonly IAdminService _adminService;
         private readonly IValidator<AdminInsertDto> _adminValidator;
-        public AdminController( 
+        public AdminController(
             [FromKeyedServices("adminService")] IAdminService adminService,
-            [FromKeyedServices("userService")]IUserService userService,
+            [FromKeyedServices("userService")] IUserService userService,
             IValidator<AdminInsertDto> adminValidator,
             IValidator<UserInsertDto> userInsertValidator
             )
         {
             _adminService = adminService;
             _adminValidator = adminValidator;
-            
+
         }
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<AdminDto>>> Get()
+        {
+            var adminDto = await _adminService.GetAll();
+            return Ok(adminDto);
+        }
+
         [HttpPost]
         public async Task<ActionResult<AdminDto>> Add( AdminInsertDto adminInsertDto )
         {

@@ -76,5 +76,13 @@ namespace ecoaccion.Api.Controllers.Participaciones
             return File(desafio.Evidencia, mimeType);
 
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ParticipacionDto>>> Get()
+        {
+            var participacionDto = await _participacionService.GetAll();
+            return Ok(participacionDto);
+        }
     }
 }

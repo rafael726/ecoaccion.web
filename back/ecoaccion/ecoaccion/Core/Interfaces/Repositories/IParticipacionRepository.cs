@@ -11,5 +11,6 @@ namespace ecoaccion.Core.Interfaces.Repositories
         Task<IEnumerable<Participacion>> GetHistorialParticipacionAsync( int idUsuario );
         Task<bool> AddParticipacionAsync( ParticipicacionInsertDto participicacionInsertDto );
         IEnumerable<Usuario> Search( Func<Usuario, bool> filer );
+        Task<IEnumerable<Participacion>> GetAll();
     }
 }

@@ -108,5 +108,13 @@ namespace ecoaccion.Infrastructure.Repositories
         public IEnumerable<Desafio> Search( Func<Desafio, bool> filer )
             => _context.Desafios.Where(filer).ToList();
 
+        public async Task<IEnumerable<Participacion>> GetAll()
+        {
+            var participaciones = await _context.Participaciones
+                .Include(p => p.Desafio)
+                .OrderByDescending(p => p.FechaRegistro)
+                .ToListAsync();
+            return participaciones;
+        }
     }
 }

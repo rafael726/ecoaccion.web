@@ -12,7 +12,7 @@ namespace ecoaccion.Core.Interfaces.Services.User
         bool Delete( int id );
         Task<UserUpdateDto> Update( UserUpdateDto userUpdateDto, int id );
         Task<UserDto> GetById( int id );
-        Task<IEnumerable<Usuario>> GetAll();
+        Task<IEnumerable<UserDto>> GetAll();
         bool Validate( UserInsertDto userInsertDto );
         bool Validate( int id );
         bool Validate(LoginUserDto loginUserDto );

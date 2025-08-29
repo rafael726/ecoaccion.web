@@ -89,5 +89,12 @@ namespace ecoaccion.Application.Services.Participaciones
             }
             return true;
         }
+
+        public async Task<IEnumerable<ParticipacionDto>> GetAll()
+        {
+            var participacions = await _participacionRepository.GetAll();
+            return participacions.Select(p => _mapper.Map<ParticipacionDto>(p));
+            
+        }
     }
 }
