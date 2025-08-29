@@ -19,12 +19,10 @@
     <link href="css/estilos.css" rel="stylesheet">
 
     <style>
-        /* Mantener tu fondo */
         body.login-bg {
             background-size: cover;
             background-position: center;
         }
-        /* Contenedor del login con transparencia para ver el fondo */
         .login-card {
             background: rgba(0, 0, 0, 0.7);
             border-radius: 1rem;
@@ -43,8 +41,8 @@
         a.small { color: #ccc; }
         a.small:hover { color: #fff; }
         .modal-content {
-            background: #0f172a; /* azul oscuro */
-            color: #e5e7eb;      /* texto claro */
+            background: #0f172a;
+            color: #e5e7eb;
             border-radius: 1rem;
         }
         .modal .form-control {
@@ -92,11 +90,9 @@
 
                 <hr>
                 <div class="text-center">
-                    <!-- ABRIR MODAL OLVIDASTE CONTRASEÑA -->
                     <a class="small" href="#" data-toggle="modal" data-target="#modalForgot">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="text-center">
-                    <!-- ABRIR MODAL REGISTRO -->
                     <a class="small" href="#" data-toggle="modal" data-target="#modalRegister">Registrarme</a>
                 </div>
             </div>
@@ -124,7 +120,6 @@
                             Enviar enlace de restablecimiento
                         </button>
                     </form>
-                    <p class="small mt-3 mb-0">Si tu correo está registrado, recibirás un enlace para restablecer tu contraseña.</p>
                 </div>
             </div>
         </div>
@@ -145,25 +140,24 @@
                     <form id="registerForm">
                         <div class="form-group">
                             <label for="regName">Nombre completo</label>
-                            <input type="text" class="form-control" id="regName" placeholder="Tu nombre" required>
+                            <input type="text" class="form-control" id="regName" required>
                         </div>
                         <div class="form-group">
                             <label for="regEmail">Correo electrónico</label>
-                            <input type="email" class="form-control" id="regEmail" placeholder="tucorreo@ejemplo.com" required>
+                            <input type="email" class="form-control" id="regEmail" required>
                         </div>
                         <div class="form-group">
                             <label for="regPassword">Contraseña</label>
-                            <input type="password" class="form-control" id="regPassword" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                            <input type="password" class="form-control" id="regPassword" minlength="6" required>
                         </div>
                         <div class="form-group">
                             <label for="regConfirm">Confirmar contraseña</label>
-                            <input type="password" class="form-control" id="regConfirm" placeholder="Repite tu contraseña" minlength="6" required>
+                            <input type="password" class="form-control" id="regConfirm" minlength="6" required>
                         </div>
                         <button type="submit" class="btn btn-success btn-block btn-modal" id="btnRegister">
                             Crear cuenta
                         </button>
                     </form>
-                    <p class="small mt-3 mb-0">Al registrarte aceptas nuestras políticas.</p>
                 </div>
             </div>
         </div>
@@ -175,106 +169,9 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Integración con backend -->
-    <script>
-        // 👉 Cambia esta URL por la de tu API ASP.NET Core
-        const API_BASE = "https://tu-dominio.com/api";
+    <!-- Nuestro script -->
+    <script src="js/auth.js"></script>
+</body>
+</html>
 
-        // Helpers
-        function setLoading(btn, loading) {
-            if (!btn) return;
-            btn.disabled = !!loading;
-            btn.dataset.originalText = btn.dataset.originalText || btn.innerHTML;
-            btn.innerHTML = loading ? 'Procesando...' : btn.dataset.originalText;
-        }
-        function showAlert(el, type, text) {
-            el.className = `alert alert-${type}`;
-            el.textContent = text;
-            el.classList.remove('d-none');
-        }
-        function hideAlert(el) {
-            el.classList.add('d-none');
-            el.textContent = '';
-        }
-
-        // LOGIN
-        document.getElementById("loginForm").addEventListener("submit", async function (e) {
-            e.preventDefault();
-            const email = document.getElementById("email").value.trim();
-            const password = document.getElementById("password").value;
-            const alertBox = document.getElementById("loginAlert");
-            const btn = document.getElementById("btnLogin");
-
-            hideAlert(alertBox);
-            setLoading(btn, true);
-
-            try {
-                const res = await fetch(`${API_BASE}/auth/login`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password })
-                });
-
-                if (!res.ok) {
-                    showAlert(alertBox, "danger", "Credenciales inválidas. Intenta nuevamente.");
-                    return;
-                }
-
-                const data = await res.json();
-                // Esperado: { token, user: { nombre, email, rol } }
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("usuario", JSON.stringify(data.user || { nombre: email }));
-
-                // Recordarme -> puedes alternar a sessionStorage si no está marcado
-                const remember = document.getElementById("remember").checked;
-                if (!remember) {
-                    // mover a sessionStorage si no desea recordar
-                    sessionStorage.setItem("token", data.token);
-                    sessionStorage.setItem("usuario", JSON.stringify(data.user || { nombre: email }));
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("usuario");
-                }
-
-                window.location.href = "index.html";
-            } catch (err) {
-                console.error(err);
-                showAlert(alertBox, "danger", "No se pudo conectar con el servidor.");
-            } finally {
-                setLoading(btn, false);
-            }
-        });
-
-        // OLVIDASTE CONTRASEÑA
-        document.getElementById("forgotForm").addEventListener("submit", async function(e) {
-            e.preventDefault();
-            const email = document.getElementById("forgotEmail").value.trim();
-            const alertBox = document.getElementById("forgotAlert");
-            const btn = document.getElementById("btnForgot");
-
-            hideAlert(alertBox);
-            setLoading(btn, true);
-
-            try {
-                const res = await fetch(`${API_BASE}/auth/forgot-password`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email })
-                });
-
-                if (!res.ok) {
-                    showAlert(alertBox, "danger", "No se pudo procesar la solicitud. Intenta más tarde.");
-                    return;
-                }
-
-                showAlert(alertBox, "success", "Si tu correo está registrado, te enviaremos un enlace para restablecer la contraseña.");
-            } catch (err) {
-                console.error(err);
-                showAlert(alertBox, "danger", "Error de conexión con el servidor.");
-            } finally {
-                setLoading(btn, false);
-            }
-        });
-
-        // REGISTRO
-        document.g
 
