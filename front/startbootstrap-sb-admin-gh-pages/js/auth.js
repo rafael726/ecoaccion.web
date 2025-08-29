@@ -1,118 +1,107 @@
-const API_BASE = "https://localhost:7258/api"; // ⚡ cámbialo por tu backend
+const API_BASE = "https://localhost:7258/api"; // Ajusta si cambia el puerto
 
-function showAlert(el, type, text) {
-    el.className = `alert alert-${type}`;
-    el.textContent = text;
-    el.classList.remove("d-none");
-}
-function hideAlert(el) {
-    el.classList.add("d-none");
-    el.textContent = "";
-}
-function setLoading(btn, loading) {
-    if (!btn) return;
-    btn.disabled = !!loading;
-    btn.dataset.originalText = btn.dataset.originalText || btn.innerHTML;
-    btn.innerHTML = loading ? "Procesando..." : btn.dataset.originalText;
-}
+// ----------- REGISTRO ADMIN -----------
+document.getElementById("registerAdminForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-// LOGIN
-document.getElementById("loginForm")?.addEventListener("submit", async e => {
-    e.preventDefault();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const alertBox = document.getElementById("loginAlert");
-    const btn = document.getElementById("btnLogin");
+  const payload = {
+    nombreUsuario: document.getElementById("admin_nombreUsuario").value,
+    correo: document.getElementById("admin_correo").value,
+    contraseña: document.getElementById("admin_contraseña").value,
+    confirmarContraseña: document.getElementById("admin_confirmarContraseña").value
+  };
 
-    hideAlert(alertBox);
-    setLoading(btn, true);
+  try {
+    const response = await fetch(`${API_BASE}/Admin`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
 
-    try {
-        const res = await fetch(`${API_BASE}/auth/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-        });
-
-        if (!res.ok) {
-            showAlert(alertBox, "danger", "Credenciales inválidas.");
-            return;
-        }
-
-        const data = await res.json();
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("usuario", JSON.stringify(data.user || { email }));
-
-        window.location.href = "index.html";
-    } catch {
-        showAlert(alertBox, "danger", "Error de conexión con el servidor.");
-    } finally {
-        setLoading(btn, false);
-    }
+    if (!response.ok) throw new Error("Error en el registro Admin");
+    const data = await response.json();
+    alert("✅ Admin registrado con éxito: " + data.nombreUsuario);
+  } catch (err) {
+    console.error(err);
+    alert("❌ No se pudo registrar Admin");
+  }
 });
 
-// REGISTRO
-document.getElementById("registerForm")?.addEventListener("submit", async e => {
-    e.preventDefault();
-    const nombre = document.getElementById("regName").value.trim();
-    const email = document.getElementById("regEmail").value.trim();
-    const password = document.getElementById("regPassword").value;
-    const confirm = document.getElementById("regConfirm").value;
-    const alertBox = document.getElementById("registerAlert");
-    const btn = document.getElementById("btnRegister");
+// ----------- LOGIN ADMIN -----------
+document.getElementById("loginAdminForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    hideAlert(alertBox);
-    if (password !== confirm) {
-        showAlert(alertBox, "danger", "Las contraseñas no coinciden.");
-        return;
-    }
-    setLoading(btn, true);
+  const payload = {
+    correo: document.getElementById("adminLogin_correo").value,
+    contraseña: document.getElementById("adminLogin_contraseña").value
+  };
 
-    try {
-        const res = await fetch(`${API_BASE}/auth/register`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nombre, email, password })
-        });
+  try {
+    const response = await fetch(`${API_BASE}/Admin/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
 
-        if (!res.ok) {
-            showAlert(alertBox, "danger", "No se pudo registrar.");
-            return;
-        }
-
-        showAlert(alertBox, "success", "Usuario registrado. Ya puedes iniciar sesión.");
-    } catch {
-        showAlert(alertBox, "danger", "Error de conexión con el servidor.");
-    } finally {
-        setLoading(btn, false);
-    }
+    if (!response.ok) throw new Error("Error en login Admin");
+    const data = await response.json();
+    localStorage.setItem("tokenAdmin", data.token); // Guarda token si backend devuelve JWT
+    alert("✅ Admin logueado con éxito");
+  } catch (err) {
+    console.error(err);
+    alert("❌ No se pudo iniciar sesión Admin");
+  }
 });
 
-// OLVIDÉ CONTRASEÑA
-document.getElementById("forgotForm")?.addEventListener("submit", async e => {
-    e.preventDefault();
-    const email = document.getElementById("forgotEmail").value.trim();
-    const alertBox = document.getElementById("forgotAlert");
-    const btn = document.getElementById("btnForgot");
+// ----------- REGISTRO USUARIO -----------
+document.getElementById("registerUserForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    hideAlert(alertBox);
-    setLoading(btn, true);
+  const payload = {
+    nombreUsuario: document.getElementById("user_nombreUsuario").value,
+    correo: document.getElementById("user_correo").value,
+    contraseña: document.getElementById("user_contraseña").value,
+    confirmarContraseña: document.getElementById("user_confirmarContraseña").value
+  };
 
-    try {
-        const res = await fetch(`${API_BASE}/auth/forgot-password`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email })
-        });
+  try {
+    const response = await fetch(`${API_BASE}/Usuario`, { // ⚡ Ajusta si tu endpoint es diferente
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
 
-        if (!res.ok) {
-            showAlert(alertBox, "danger", "No se pudo procesar la solicitud.");
-            return;
-        }
-        showAlert(alertBox, "success", "Si el correo existe, te llegará un enlace.");
-    } catch {
-        showAlert(alertBox, "danger", "Error de conexión con el servidor.");
-    } finally {
-        setLoading(btn, false);
-    }
+    if (!response.ok) throw new Error("Error en el registro Usuario");
+    const data = await response.json();
+    alert("✅ Usuario registrado con éxito: " + data.nombreUsuario);
+  } catch (err) {
+    console.error(err);
+    alert("❌ No se pudo registrar Usuario");
+  }
+});
+
+// ----------- LOGIN USUARIO -----------
+document.getElementById("loginUserForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const payload = {
+    correo: document.getElementById("userLogin_correo").value,
+    contraseña: document.getElementById("userLogin_contraseña").value
+  };
+
+  try {
+    const response = await fetch(`${API_BASE}/Usuario/login`, { // ⚡ Ajusta si tu endpoint es diferente
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) throw new Error("Error en login Usuario");
+    const data = await response.json();
+    localStorage.setItem("tokenUser", data.token); // Guarda token si backend devuelve JWT
+    alert("✅ Usuario logueado con éxito");
+  } catch (err) {
+    console.error(err);
+    alert("❌ No se pudo iniciar sesión Usuario");
+  }
 });

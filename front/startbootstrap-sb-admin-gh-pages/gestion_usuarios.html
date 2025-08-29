@@ -76,35 +76,31 @@
                     </div>
                 </div>
 
-                <!-- Tabla de Usuarios -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Listado de Usuarios</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Correo</th>
-                                        <th>Estado</th>
-                                        <th>Rol</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>1</td><td>UsuarioA</td><td>usera@mail.com</td><td>Activo</td><td>Participante</td></tr>
-                                    <tr><td>2</td><td>UsuarioB</td><td>userb@mail.com</td><td>Activo</td><td>Participante</td></tr>
-                                    <tr><td>3</td><td>UsuarioC</td><td>userc@mail.com</td><td>Inactivo</td><td>Participante</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
+    <!-- Tabla de Usuarios -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Listado de Usuarios</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Estado</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody id="usuarios-tbody">
+             <!-- Filas se llenarán dinámicamente -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
             </div>
-        </div>
 
         <footer class="sticky-footer bg-white">
             <div class="container my-auto text-center">
@@ -122,5 +118,54 @@
     const usuario = JSON.parse(localStorage.getItem("usuario")) || { nombre: "Invitado" };
     document.getElementById("nombreUsuario").innerText = usuario.nombre;
 </script>
+
+<script src="js/gestion_usuarios.js"></script>
+
+<div class="modal fade" id="editarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="formEditarUsuario">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editar-id">
+          <div class="form-group">
+            <label for="editar-nombre">Nombre</label>
+            <input type="text" class="form-control" id="editar-nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="editar-correo">Correo</label>
+            <input type="email" class="form-control" id="editar-correo" required>
+          </div>
+          <div class="form-group">
+            <label for="editar-estado">Estado</label>
+            <select class="form-control" id="editar-estado">
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="editar-rol">Rol</label>
+            <select class="form-control" id="editar-rol">
+              <option value="admin">Administrador</option>
+              <option value="user">Participante</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>

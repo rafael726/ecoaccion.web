@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ecoaccion")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+202c915b1c038dade3a0e026d39fec0ddcb9f816")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6feb7f0f5f2b089dc2a1d9a93358583f677858b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("ecoaccion")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ecoaccion")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
