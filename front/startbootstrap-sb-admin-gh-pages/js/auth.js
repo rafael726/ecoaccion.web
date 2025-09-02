@@ -1,107 +1,108 @@
-const API_BASE = "https://localhost:7258/api"; // Ajusta si cambia el puerto
+const API_BASE = "https://localhost:7258/api"; // Ajusta el puerto si cambia
 
-// ----------- REGISTRO ADMIN -----------
-document.getElementById("registerAdminForm").addEventListener("submit", async (e) => {
+// ----------- LOGIN -----------
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const payload = {
-    nombreUsuario: document.getElementById("admin_nombreUsuario").value,
-    correo: document.getElementById("admin_correo").value,
-    contraseña: document.getElementById("admin_contraseña").value,
-    confirmarContraseña: document.getElementById("admin_confirmarContraseña").value
-  };
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const alertBox = document.getElementById("loginAlert");
 
   try {
-    const response = await fetch(`${API_BASE}/Admin`, {
+    const response = await fetch(`${API_BASE}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ correo: email, contraseña: password })
     });
 
-    if (!response.ok) throw new Error("Error en el registro Admin");
     const data = await response.json();
-    alert("✅ Admin registrado con éxito: " + data.nombreUsuario);
+
+    if (!response.ok) {
+      throw new Error(data.message || "Credenciales inválidas");
+    }
+
+    // Guardar token y rol
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("role", data.role);
+
+    // Redirigir según rol
+    if (data.role === "Admin") {
+      window.location.href = "admin-dashboard.html";
+    } else {
+      window.location.href = "dashboard.html";
+    }
   } catch (err) {
-    console.error(err);
-    alert("❌ No se pudo registrar Admin");
+    alertBox.textContent = err.message;
+    alertBox.classList.remove("d-none");
   }
 });
 
-// ----------- LOGIN ADMIN -----------
-document.getElementById("loginAdminForm").addEventListener("submit", async (e) => {
+// ----------- REGISTRO -----------
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const payload = {
-    correo: document.getElementById("adminLogin_correo").value,
-    contraseña: document.getElementById("adminLogin_contraseña").value
-  };
+  const name = document.getElementById("regName").value;
+  const email = document.getElementById("regEmail").value;
+  const password = document.getElementById("regPassword").value;
+  const confirm = document.getElementById("regConfirm").value;
+  const alertBox = document.getElementById("registerAlert");
+
+  if (password !== confirm) {
+    alertBox.textContent = "Las contraseñas no coinciden.";
+    alertBox.classList.remove("d-none", "alert-success");
+    alertBox.classList.add("alert-danger");
+    return;
+  }
 
   try {
-    const response = await fetch(`${API_BASE}/Admin/login`, {
+    const response = await fetch(`${API_BASE}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ nombre: name, correo: email, contraseña: password })
     });
 
-    if (!response.ok) throw new Error("Error en login Admin");
     const data = await response.json();
-    localStorage.setItem("tokenAdmin", data.token); // Guarda token si backend devuelve JWT
-    alert("✅ Admin logueado con éxito");
+
+    if (!response.ok) {
+      throw new Error(data.message || "Error al registrar usuario");
+    }
+
+    alertBox.textContent = "✅ Registro exitoso, ahora puedes iniciar sesión.";
+    alertBox.classList.remove("d-none", "alert-danger");
+    alertBox.classList.add("alert-success");
   } catch (err) {
-    console.error(err);
-    alert("❌ No se pudo iniciar sesión Admin");
+    alertBox.textContent = err.message;
+    alertBox.classList.remove("d-none", "alert-success");
+    alertBox.classList.add("alert-danger");
   }
 });
 
-// ----------- REGISTRO USUARIO -----------
-document.getElementById("registerUserForm").addEventListener("submit", async (e) => {
+// ----------- OLVIDÉ CONTRASEÑA -----------
+document.getElementById("forgotForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const payload = {
-    nombreUsuario: document.getElementById("user_nombreUsuario").value,
-    correo: document.getElementById("user_correo").value,
-    contraseña: document.getElementById("user_contraseña").value,
-    confirmarContraseña: document.getElementById("user_confirmarContraseña").value
-  };
+  const email = document.getElementById("forgotEmail").value;
+  const alertBox = document.getElementById("forgotAlert");
 
   try {
-    const response = await fetch(`${API_BASE}/Usuario`, { // ⚡ Ajusta si tu endpoint es diferente
+    const response = await fetch(`${API_BASE}/auth/forgot-password`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ correo: email })
     });
 
-    if (!response.ok) throw new Error("Error en el registro Usuario");
     const data = await response.json();
-    alert("✅ Usuario registrado con éxito: " + data.nombreUsuario);
+
+    if (!response.ok) {
+      throw new Error(data.message || "Error al enviar correo de recuperación");
+    }
+
+    alertBox.textContent = "📩 Se envió un enlace a tu correo.";
+    alertBox.classList.remove("d-none", "alert-danger");
+    alertBox.classList.add("alert-success");
   } catch (err) {
-    console.error(err);
-    alert("❌ No se pudo registrar Usuario");
-  }
-});
-
-// ----------- LOGIN USUARIO -----------
-document.getElementById("loginUserForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const payload = {
-    correo: document.getElementById("userLogin_correo").value,
-    contraseña: document.getElementById("userLogin_contraseña").value
-  };
-
-  try {
-    const response = await fetch(`${API_BASE}/Usuario/login`, { // ⚡ Ajusta si tu endpoint es diferente
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) throw new Error("Error en login Usuario");
-    const data = await response.json();
-    localStorage.setItem("tokenUser", data.token); // Guarda token si backend devuelve JWT
-    alert("✅ Usuario logueado con éxito");
-  } catch (err) {
-    console.error(err);
-    alert("❌ No se pudo iniciar sesión Usuario");
+    alertBox.textContent = err.message;
+    alertBox.classList.remove("d-none", "alert-success");
+    alertBox.classList.add("alert-danger");
   }
 });
