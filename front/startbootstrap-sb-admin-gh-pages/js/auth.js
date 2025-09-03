@@ -1,108 +1,105 @@
-const API_BASE = "https://localhost:7258/api"; // Ajusta el puerto si cambia
+const API_BASE = "https://localhost:7258/api"; // Ajusta si cambia el puerto
 
-// ----------- LOGIN -----------
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+// ----------- REGISTRO ADMIN -----------
+document.getElementById("registerAdminForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const alertBox = document.getElementById("loginAlert");
+    const formData = new URLSearchParams();
+    formData.append("NombreUsuario", document.getElementById("admin_nombreUsuario").value);
+    formData.append("Correo", document.getElementById("admin_correo").value);
+    formData.append("Contraseña", document.getElementById("admin_contraseña").value);
+    formData.append("ConfirmarContraseña", document.getElementById("admin_confirmarContraseña").value);
 
-  try {
-    const response = await fetch(`${API_BASE}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ correo: email, contraseña: password })
-    });
+    try {
+        const response = await fetch(`${API_BASE}/Admin`, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData.toString()
+        });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Credenciales inválidas");
+        if (!response.ok) throw await response.json();
+        const data = await response.json();
+        alert("✅ Admin registrado con éxito: " + data.nombreUsuario);
+    } catch (err) {
+        console.error(err);
+        alert("❌ No se pudo registrar Admin: " + JSON.stringify(err));
     }
-
-    // Guardar token y rol
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("role", data.role);
-
-    // Redirigir según rol
-    if (data.role === "Admin") {
-      window.location.href = "admin-dashboard.html";
-    } else {
-      window.location.href = "dashboard.html";
-    }
-  } catch (err) {
-    alertBox.textContent = err.message;
-    alertBox.classList.remove("d-none");
-  }
 });
 
-// ----------- REGISTRO -----------
-document.getElementById("registerForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+// ----------- LOGIN ADMIN -----------
+document.getElementById("loginAdminForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const name = document.getElementById("regName").value;
-  const email = document.getElementById("regEmail").value;
-  const password = document.getElementById("regPassword").value;
-  const confirm = document.getElementById("regConfirm").value;
-  const alertBox = document.getElementById("registerAlert");
+    const formData = new URLSearchParams();
+    formData.append("Correo", document.getElementById("adminLogin_correo").value);
+    formData.append("Contraseña", document.getElementById("adminLogin_contraseña").value);
 
-  if (password !== confirm) {
-    alertBox.textContent = "Las contraseñas no coinciden.";
-    alertBox.classList.remove("d-none", "alert-success");
-    alertBox.classList.add("alert-danger");
-    return;
-  }
+    try {
+        const response = await fetch(`${API_BASE}/Admin/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData.toString()
+        });
 
-  try {
-    const response = await fetch(`${API_BASE}/auth/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre: name, correo: email, contraseña: password })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Error al registrar usuario");
+        if (!response.ok) throw await response.json();
+        const data = await response.json();
+        localStorage.setItem("tokenAdmin", data.token);
+        alert("✅ Admin logueado con éxito");
+    } catch (err) {
+        console.error(err);
+        alert("❌ No se pudo iniciar sesión Admin: " + JSON.stringify(err));
     }
-
-    alertBox.textContent = "✅ Registro exitoso, ahora puedes iniciar sesión.";
-    alertBox.classList.remove("d-none", "alert-danger");
-    alertBox.classList.add("alert-success");
-  } catch (err) {
-    alertBox.textContent = err.message;
-    alertBox.classList.remove("d-none", "alert-success");
-    alertBox.classList.add("alert-danger");
-  }
 });
 
-// ----------- OLVIDÉ CONTRASEÑA -----------
-document.getElementById("forgotForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+// ----------- REGISTRO USUARIO -----------
+document.getElementById("registerUserForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const email = document.getElementById("forgotEmail").value;
-  const alertBox = document.getElementById("forgotAlert");
+    const formData = new URLSearchParams();
+    formData.append("NombreUsuario", document.getElementById("user_nombreUsuario").value);
+    formData.append("Correo", document.getElementById("user_correo").value);
+    formData.append("Contraseña", document.getElementById("user_contraseña").value);
+    formData.append("ConfirmarContraseña", document.getElementById("user_confirmarContraseña").value);
 
-  try {
-    const response = await fetch(`${API_BASE}/auth/forgot-password`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ correo: email })
-    });
+    try {
+        const response = await fetch(`${API_BASE}/User`, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData.toString()
+        });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Error al enviar correo de recuperación");
+        if (!response.ok) throw await response.json();
+        const data = await response.json();
+        alert("✅ Usuario registrado con éxito: " + data.nombreUsuario);
+    } catch (err) {
+        console.error(err);
+        alert("❌ No se pudo registrar Usuario: " + JSON.stringify(err));
     }
-
-    alertBox.textContent = "📩 Se envió un enlace a tu correo.";
-    alertBox.classList.remove("d-none", "alert-danger");
-    alertBox.classList.add("alert-success");
-  } catch (err) {
-    alertBox.textContent = err.message;
-    alertBox.classList.remove("d-none", "alert-success");
-    alertBox.classList.add("alert-danger");
-  }
 });
+
+// ----------- LOGIN USUARIO -----------
+document.getElementById("loginUserForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new URLSearchParams();
+    formData.append("Correo", document.getElementById("userLogin_correo").value);
+    formData.append("Contraseña", document.getElementById("userLogin_contraseña").value);
+
+    try {
+        const response = await fetch(`${API_BASE}/User/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData.toString()
+        });
+
+        if (!response.ok) throw await response.json();
+        const data = await response.json();
+        localStorage.setItem("tokenUser", data.token);
+        alert("✅ Usuario logueado con éxito");
+    } catch (err) {
+        console.error(err);
+        alert("❌ No se pudo iniciar sesión Usuario: " + JSON.stringify(err));
+    }
+});
+
+
