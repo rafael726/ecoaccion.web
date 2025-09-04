@@ -25,7 +25,7 @@ if (nombreUsuarioElem) {
 
 // Función para cargar desafíos
 function cargarDesafios() {
-  const token = localStorage.getItem("token");
+ const token = localStorage.getItem("token") || localStorage.getItem("tokenAdmin");
   if (!token) {
     alert("No estás autenticado. Por favor inicia sesión.");
     window.location.href = "login.html";

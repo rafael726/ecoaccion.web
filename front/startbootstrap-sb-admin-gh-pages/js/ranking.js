@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const token = localStorage.getItem("token");
-  const usuario = JSON.parse(localStorage.getItem("usuario")) || { nombre: "Invitado" };
+  const token = localStorage.getItem("token") || localStorage.getItem("tokenAdmin");
+    const usuario = JSON.parse(localStorage.getItem("usuario") || localStorage.getItem("admin") || "{}");
   document.getElementById("nombreUsuario").innerText = usuario.nombre;
 
   if (!token) {

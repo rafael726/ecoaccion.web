@@ -347,8 +347,9 @@
 <script>
     // Configuración de la API
     const API_BASE = "https://localhost:7258/api";
-    const token = localStorage.getItem("token");
-    const usuario = JSON.parse(localStorage.getItem("usuario") || "{}");
+   const token = localStorage.getItem("token") || localStorage.getItem("tokenAdmin");
+    const usuario = JSON.parse(localStorage.getItem("usuario") || localStorage.getItem("admin") || "{}");
+
 
     // Verificar autenticación
     if (!token) {

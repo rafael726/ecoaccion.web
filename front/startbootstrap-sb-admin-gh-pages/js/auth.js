@@ -1,71 +1,44 @@
 const API_BASE = "https://localhost:7258/api"; // Ajusta si cambia el puerto
 
+
+function hideAlert(el) {
+    el.classList.add("d-none");
+    el.textContent = "";
+}
+
+function showAlert(el, type, text) {
+    el.className = `alert alert-${type}`;
+    el.textContent = text;
+    el.classList.remove("d-none");
+}
+
+
+function setLoading(btn, loading) {
+    if (!btn) return;
+    btn.disabled = !!loading;
+    btn.dataset.originalText = btn.dataset.originalText || btn.innerHTML;
+    btn.innerHTML = loading ? "Procesando..." : btn.dataset.originalText;
+}
+
 // ----------- REGISTRO ADMIN -----------
-document.getElementById("registerAdminForm").addEventListener("submit", async (e) => {
+document.getElementById("registerAdminForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new URLSearchParams();
-    formData.append("NombreUsuario", document.getElementById("admin_nombreUsuario").value);
-    formData.append("Correo", document.getElementById("admin_correo").value);
-    formData.append("Contraseña", document.getElementById("admin_contraseña").value);
-    formData.append("ConfirmarContraseña", document.getElementById("admin_confirmarContraseña").value);
+    // Construir el objeto con los valores del formulario
+    const adminData = {
+        nombreUsuario: document.getElementById("admin_nombreUsuario").value,
+        correo: document.getElementById("admin_correo").value,
+        contraseña: document.getElementById("admin_contraseña").value,
+        confirmarContraseña: document.getElementById("admin_confirmarContraseña").value
+    };
+
+    const rolConfig = document.getElementById("regRole").value;
 
     try {
-        const response = await fetch(`${API_BASE}/Admin`, {
+        const response = await fetch(`${API_BASE}/` + rolConfig, {
             method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: formData.toString()
-        });
-
-        if (!response.ok) throw await response.json();
-        const data = await response.json();
-        alert("✅ Admin registrado con éxito: " + data.nombreUsuario);
-    } catch (err) {
-        console.error(err);
-        alert("❌ No se pudo registrar Admin: " + JSON.stringify(err));
-    }
-});
-
-// ----------- LOGIN ADMIN -----------
-document.getElementById("loginAdminForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new URLSearchParams();
-    formData.append("Correo", document.getElementById("adminLogin_correo").value);
-    formData.append("Contraseña", document.getElementById("adminLogin_contraseña").value);
-
-    try {
-        const response = await fetch(`${API_BASE}/Admin/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: formData.toString()
-        });
-
-        if (!response.ok) throw await response.json();
-        const data = await response.json();
-        localStorage.setItem("tokenAdmin", data.token);
-        alert("✅ Admin logueado con éxito");
-    } catch (err) {
-        console.error(err);
-        alert("❌ No se pudo iniciar sesión Admin: " + JSON.stringify(err));
-    }
-});
-
-// ----------- REGISTRO USUARIO -----------
-document.getElementById("registerUserForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new URLSearchParams();
-    formData.append("NombreUsuario", document.getElementById("user_nombreUsuario").value);
-    formData.append("Correo", document.getElementById("user_correo").value);
-    formData.append("Contraseña", document.getElementById("user_contraseña").value);
-    formData.append("ConfirmarContraseña", document.getElementById("user_confirmarContraseña").value);
-
-    try {
-        const response = await fetch(`${API_BASE}/User`, {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: formData.toString()
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(adminData)
         });
 
         if (!response.ok) throw await response.json();
@@ -77,29 +50,42 @@ document.getElementById("registerUserForm").addEventListener("submit", async (e)
     }
 });
 
-// ----------- LOGIN USUARIO -----------
-document.getElementById("loginUserForm").addEventListener("submit", async (e) => {
+// ----------- LOGIN ADMIN -----------
+document.getElementById("loginAdminForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new URLSearchParams();
-    formData.append("Correo", document.getElementById("userLogin_correo").value);
-    formData.append("Contraseña", document.getElementById("userLogin_contraseña").value);
+    const correo = document.getElementById("adminLogin_correo").value.trim();
+    const contraseña = document.getElementById("adminLogin_contraseña").value;
+    const alertBox = document.getElementById("loginAlert"); // div para mensajes
+    const btn = document.getElementById("btnLoginAdmin"); // botón login
+    const rolConfig = document.getElementById("loginRol").value;
+   
+    setLoading(btn, true);
 
     try {
-        const response = await fetch(`${API_BASE}/User/login`, {
+        const response = await fetch(`${API_BASE}/` + rolConfig + `/login`, {
             method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: formData.toString()
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ Correo: correo, Contraseña: contraseña })
         });
 
-        if (!response.ok) throw await response.json();
+        if (!response.ok) {
+            showAlert(alertBox, "danger", "❌ Credenciales inválidas.");
+            return;
+        }
+
         const data = await response.json();
-        localStorage.setItem("tokenUser", data.token);
-        alert("✅ Usuario logueado con éxito");
+
+        // Guardar token en localStorage
+        localStorage.setItem("tokenAdmin", data.token);
+        localStorage.setItem("admin", JSON.stringify(data.admin || { correo }));
+
+        // Redirigir al index
+        window.location.href = "index.html";
     } catch (err) {
         console.error(err);
-        alert("❌ No se pudo iniciar sesión Usuario: " + JSON.stringify(err));
+        showAlert(alertBox, "danger", "⚠️ Error de conexión con el servidor.");
+    } finally {
+        setLoading(btn, false);
     }
 });
-
-

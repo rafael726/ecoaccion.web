@@ -1,5 +1,5 @@
 const API_BASE = "https://localhost:7258/api";
-const token = localStorage.getItem("token");
+const token = localStorage.getItem("token") || localStorage.getItem("tokenAdmin");
 
 // Verificar sesión
 if (!token) {
