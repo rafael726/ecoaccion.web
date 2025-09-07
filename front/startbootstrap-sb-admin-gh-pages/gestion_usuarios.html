@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,163 +10,242 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700,900" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
+
 <body id="page-top">
-<div id="wrapper">
+    <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon"><i class="fas fa-leaf"></i></div>
-            <div class="sidebar-brand-text mx-3">EcoAcción</div>
-        </a>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-fw fa-home"></i><span>Inicio</span></a></li>
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">Participación</div>
-        <li class="nav-item"><a class="nav-link" href="desafios.html"><i class="fas fa-fw fa-seedling"></i><span>Desafíos Disponibles</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="participaciones.html"><i class="fas fa-fw fa-check"></i><span>Mis Participaciones</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="ranking.html"><i class="fas fa-fw fa-trophy"></i><span>Ranking</span></a></li>
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">Administración</div>
-        <li class="nav-item active"><a class="nav-link" href="gestion_usuarios.html"><i class="fas fa-fw fa-users-cog"></i><span>Gestión de Usuarios</span></a></li>
-        <hr class="sidebar-divider d-none d-md-block">
-    </ul>
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon"><i class="fas fa-leaf"></i></div>
+                <div class="sidebar-brand-text mx-3">EcoAcción</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item"><a class="nav-link" href="index.html"><i
+                        class="fas fa-fw fa-home"></i><span>Inicio</span></a></li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">Participación</div>
+            <li class="nav-item"><a class="nav-link" href="desafios.html"><i
+                        class="fas fa-fw fa-seedling"></i><span>Desafíos Disponibles</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="participaciones.html"><i
+                        class="fas fa-fw fa-check"></i><span>Mis Participaciones</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="ranking.html"><i
+                        class="fas fa-fw fa-trophy"></i><span>Ranking</span></a></li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">Administración</div>
+            <li class="nav-item active"><a class="nav-link" href="gestion_usuarios.html"><i
+                        class="fas fa-fw fa-users-cog"></i><span>Gestión de Usuarios</span></a></li>
+            <hr class="sidebar-divider d-none d-md-block">
+        </ul>
 
-    <!-- Contenido principal -->
-    <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nombreUsuario">Usuario</span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <!-- Contenido principal -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                    id="nombreUsuario">Usuario</span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
 
-            <div class="container-fluid">
-                <h1 class="h3 mb-4 text-gray-800">Gestión de Usuarios</h1>
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Gestión de Usuarios</h1>
+                        <button class="btn btn-success" id="btnNuevoUsuario" data-toggle="modal"
+                            data-target="#crearUsuarioModal">
+                            <i class="fas fa-user-plus mr-1"></i> Nuevo Usuario
+                        </button>
+                    </div>
 
-                <!-- Cards de ejemplo -->
-                <div class="row">
+                    <!-- Cards de ejemplo -->
                     <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Usuarios Activos</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">120</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Usuarios Inactivos</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">30</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Usuarios</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">150</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-    <!-- Tabla de Usuarios -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Listado de Usuarios</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Correo</th>
-                            <th>Estado</th>
-                            <th>Rol</th>
-                            <th>Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody id="usuarios-tbody">
-             <!-- Filas se llenarán dinámicamente -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto text-center">
-                <span>EcoAcción &copy; 2025</span>
-            </div>
-        </footer>
-    </div>
-</div>
-
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="js/sb-admin-2.min.js"></script>
-<script>
-    const usuario = JSON.parse(localStorage.getItem("usuario")) || { nombre: "Invitado" };
-    document.getElementById("nombreUsuario").innerText = usuario.nombre;
-</script>
-
-<script src="js/gestion_usuarios.js"></script>
-
-<div class="modal fade" id="editarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form id="formEditarUsuario">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="editar-id">
-          <div class="form-group">
-            <label for="editar-nombre">Nombre</label>
-            <input type="text" class="form-control" id="editar-nombre" required>
-          </div>
-          <div class="form-group">
-            <label for="editar-correo">Correo</label>
-            <input type="email" class="form-control" id="editar-correo" required>
-          </div>
-          <div class="form-group">
-            <label for="editar-estado">Estado</label>
-            <select class="form-control" id="editar-estado">
-              <option value="Activo">Activo</option>
-              <option value="Inactivo">Inactivo</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="editar-rol">Rol</label>
-            <select class="form-control" id="editar-rol">
-              <option value="admin">Administrador</option>
-              <option value="user">Participante</option>
-            </select>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Guardar Cambios</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        </div>
-      </form>
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Usuarios</div>
+        <div class="h5 mb-0 font-weight-bold text-gray-800" id="cardTotal">0</div>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <!-- Tabla de Usuarios -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Listado de Usuarios</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nombre</th>
+                                            <th>Correo</th>
+                                            <th>Puntos</th>
+                                            <th id="thAcciones" style="width:120px;">Acciones</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="usuarios-tbody">
+                                        <!-- Filas se llenarán dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto text-center">
+                            <span>EcoAcción &copy; 2025</span>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <script src="js/sb-admin-2.min.js"></script>
+            <script>
+                const usuario = JSON.parse(localStorage.getItem("usuario")) || { nombre: "Invitado" };
+                document.getElementById("nombreUsuario").innerText = usuario.nombre;
+            </script>
+
+            <script src="js/gestion_usuarios.js"></script>
+
+            <div class="modal fade" id="editarUsuarioModal" tabindex="-1" role="dialog"
+                aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="formEditarUsuario">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" id="editar-id">
+                                <div class="form-group">
+                                    <label for="editar-nombre">Nombre de usuario</label>
+                                    <input type="text" class="form-control" id="editar-nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editar-correo">Correo</label>
+                                    <input type="email" class="form-control" id="editar-correo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editar-puntos">Puntos</label>
+                                    <input type="number" class="form-control" id="editar-puntos" min="0" step="1"
+                                        required>
+                                </div>
+
+                                <!-- Opcional: cambio de contraseña (si se deja en blanco, no se actualiza) -->
+                                <div class="border-top pt-3 mt-3">
+                                    <div class="form-group">
+                                        <label for="editar-pass">Nueva contraseña (opcional)</label>
+                                        <input type="password" class="form-control" id="editar-pass" minlength="6"
+                                            placeholder="Dejar en blanco para no cambiar">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editar-pass2">Confirmar nueva contraseña</label>
+                                        <input type="password" class="form-control" id="editar-pass2" minlength="6"
+                                            placeholder="Dejar en blanco para no cambiar">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog"
+                aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="formCrearUsuario">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="crearUsuarioModalLabel">Crear Usuario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="crear-nombre">Nombre de usuario</label>
+                                    <input type="text" class="form-control" id="crear-nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="crear-correo">Correo</label>
+                                    <input type="email" class="form-control" id="crear-correo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="crear-pass">Contraseña</label>
+                                    <input type="password" class="form-control" id="crear-pass" minlength="6" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="crear-pass2">Confirmar contraseña</label>
+                                    <input type="password" class="form-control" id="crear-pass2" minlength="6" required>
+                                </div>
+                                <small class="text-muted">La contraseña debe tener al menos 6 caracteres.</small>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Crear</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
+<script>
+        (function initTopbar() {
+            const nombreEl = document.getElementById("nombreUsuario");
+            // Helpers
+            const getRawToken = () =>
+                (localStorage.getItem("token") || localStorage.getItem("tokenAdmin") || "")
+                    .replace(/^Bearer\s+/i, "")
+                    .trim();
+
+            const b64urlToStr = (s) => {
+                try {
+                    return atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "="));
+                } catch { return ""; }
+            };
+
+            const getEmailFromJWT = (jwt) => {
+                const parts = jwt.split(".");
+                if (parts.length < 2) return "";
+                try {
+                    const payload = JSON.parse(b64urlToStr(parts[1]) || "{}");
+                    return payload.email || "";
+                } catch { return ""; }
+            };
+
+            let email = localStorage.getItem("userEmail") || "";
+
+            if (!email) {
+                const jwt = getRawToken();
+                if (jwt) {
+                    email = getEmailFromJWT(jwt);
+                    if (email) localStorage.setItem("userEmail", email);
+                }
+            }
+            nombreEl.textContent = email || "Invitado";
+
+        })();
+    </script>
 </html>

@@ -1,92 +1,391 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Desafíos - EcoAcción</title>
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700,900" rel="stylesheet" />
-    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Desafíos - EcoAcción</title>
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700,900" rel="stylesheet" />
+  <link href="css/sb-admin-2.min.css" rel="stylesheet" />
 </head>
+
 <body id="page-top">
-    <div id="wrapper">
+  <div id="wrapper">
 
-        <!-- Sidebar (igual que antes) -->
-        <!-- Aquí va tu sidebar... -->
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon"><i class="fas fa-leaf"></i></div>
+        <div class="sidebar-brand-text mx-3">EcoAcción</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item"><a class="nav-link" href="index.html"><i
+            class="fas fa-fw fa-home"></i><span>Inicio</span></a></li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">Participación</div>
+      <li class="nav-item active"><a class="nav-link" href="desafios.html"><i
+            class="fas fa-fw fa-seedling"></i><span>Desafíos Disponibles</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="participaciones.html"><i class="fas fa-fw fa-check"></i><span>Mis
+            Participaciones</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="ranking.html"><i
+            class="fas fa-fw fa-trophy"></i><span>Ranking</span></a></li>
+      <div class="sidebar-heading d-none" id="adminHeading">Administración</div>
+            <li class="nav-item d-none" id="adminMenuItem">
+                <a class="nav-link" href="gestion_usuarios.html">
+                    <i class="fas fa-fw fa-users-cog"></i><span>Gestión de Usuarios</span>
+                </a>
+            </li>
+      <hr class="sidebar-divider d-none d-md-block">
+    </ul>
+    <!-- /Sidebar -->
 
-        <!-- Contenido principal -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <!-- Navbar (igual que antes) -->
-                <!-- Aquí va tu navbar... -->
+    <!-- Contenido principal -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
 
-                <div class="container-fluid">
-                    <h1 class="h3 mb-4 text-gray-800">Desafíos Disponibles</h1>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="navbar-nav ml-auto">
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nombreUsuario">Usuario</span>
+                <img class="img-profile rounded-circle" src="img/undraw_profile.svg" id="userAvatar">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profileModal">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Perfil
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Cerrar Sesión
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- /Navbar -->
+        <div class="container-fluid">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 text-gray-800 mb-0">Desafíos Disponibles</h1>
+            <button class="btn btn-success" id="btnNuevoDesafio" data-target="#desafioModal">
+              <i class="fas fa-plus mr-1"></i> Crear desafío
+            </button>
+          </div>
 
-                    <!-- Cards -->
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Desafíos Activos</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="desafiosActivos">0</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Desafíos Completados</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="desafiosCompletados">0</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tabla de desafíos -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Listado de Desafíos</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Descripción</th>
-                                            <th>Puntos</th>
-                                            <th>Estado</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="desafios-tbody">
-                                        <!-- Se llenará con JS -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
+          <!-- Cards -->
+          <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Desafíos Activos</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800" id="desafiosActivos">0</div>
                 </div>
+              </div>
             </div>
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto text-center">
-                    <span>EcoAcción &copy; 2025</span>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Desafíos Completados</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800" id="desafiosCompletados">0</div>
                 </div>
-            </footer>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabla de desafíos -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Listado de Desafíos</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Título</th>
+                      <th>Descripción</th>
+                      <th>Meta</th>
+                      <th>Vigencia</th>
+                      <th>Estado</th>
+                      <th id="thAcciones" style="width:120px;">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="desafios-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
         </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto text-center">
+          <span>EcoAcción &copy; 2025</span>
+        </div>
+      </footer>
     </div>
+  </div>
 
-    <!-- Scripts base -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/sb-admin-2.min.js"></script>
+  <!-- Modals (opcional: mismos que index, si los usas) -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">¿Listo para salir?</h5>
+          <button class="close" type="button" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">Selecciona "Cerrar Sesión" para salir de tu cuenta.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-success" href="login.html" onclick="localStorage.clear()">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Nuestro script personalizado -->
-    <script src="js/scripts.js"></script>
+  <div class="modal fade" id="desafioModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form id="formDesafio">
+        <div class="modal-header">
+          <h5 class="modal-title" id="desafioModalTitle">Crear desafío</h5>
+          <button class="close" type="button" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="dId" />
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="dTitulo">Título</label>
+              <input type="text" class="form-control" id="dTitulo" required />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="dMeta">Meta</label>
+              <input type="text" class="form-control" id="dMeta" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dDescripcion">Descripción</label>
+            <textarea class="form-control" id="dDescripcion" rows="3" required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="dFechaInicio">Fecha inicio</label>
+              <input type="datetime-local" class="form-control" id="dFechaInicio" required />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="dFechaFin">Fecha fin</label>
+              <input type="datetime-local" class="form-control" id="dFechaFin" required />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <button class="btn btn-primary" type="submit" id="btnGuardarDesafio">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Mi Perfil</h5>
+          <button class="close" type="button" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img class="img-profile rounded-circle mb-3" src="img/undraw_profile.svg" id="profileAvatar"
+                style="width: 150px; height: 150px;">
+              <h5 id="profileName">Usuario</h5>
+              <p class="text-muted" id="profileEmail">usuario@ejemplo.com</p>
+              <div class="badge badge-success p-2" id="profileLevel">Nivel: Principiante</div>
+            </div>
+            <div class="col-md-8">
+              <h6 class="text-primary">Estadísticas</h6>
+              <div class="row mb-3">
+                <div class="col-6"><small>Puntos Totales</small>
+                  <h4 id="profileTotalPoints">0</h4>
+                </div>
+                <div class="col-6"><small>Desafíos Completados</small>
+                  <h4 id="profileCompletedChallenges">0</h4>
+                </div>
+              </div>
+              <h6 class="text-primary mt-4">Mi Impacto Ambiental</h6>
+              <div class="impact-stats">
+                <div class="d-flex justify-content-between mb-2"><span>CO₂ reducido (kg)</span><strong
+                    id="profileCO2">0</strong></div>
+                <div class="d-flex justify-content-between mb-2"><span>Agua ahorrada (L)</span><strong
+                    id="profileWater">0</strong></div>
+                <div class="d-flex justify-content-between mb-2"><span>Residuos reciclados (kg)</span><strong
+                    id="profileWaste">0</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts base -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Tu script -->
+  <script src="js/scripts.js"></script>
+  <script src="js/desafios.js"></script>
+  <script>
+  (function initTopbar() {
+    const nombreEl = document.getElementById("nombreUsuario");
+    // Helpers
+    const getRawToken = () =>
+      (localStorage.getItem("token") || localStorage.getItem("tokenAdmin") || "")
+        .replace(/^Bearer\s+/i, "")
+        .trim();
+
+    const b64urlToStr = (s) => {
+      try {
+        return atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "="));
+      } catch { return ""; }
+    };
+
+    const getEmailFromJWT = (jwt) => {
+      const parts = jwt.split(".");
+      if (parts.length < 2) return "";
+      try {
+        const payload = JSON.parse(b64urlToStr(parts[1]) || "{}");
+        // Tu backend pone el email en JwtRegisteredClaimNames.Email -> "email"
+        return payload.email || "";
+      } catch { return ""; }
+    };
+
+    // 1) intenta leer email ya persistido
+    let email = localStorage.getItem("userEmail") || "";
+
+    // 2) si no hay, decodifica del JWT y persiste
+    if (!email) {
+      const jwt = getRawToken();
+      if (jwt) {
+        email = getEmailFromJWT(jwt);
+        if (email) localStorage.setItem("userEmail", email);
+      }
+    }
+
+    // 3) pinta el topbar
+    nombreEl.textContent = email || "Invitado";
+   
+  })();
+</script>
+<script>
+        (function initTopbar() {
+            const nombreEl = document.getElementById("nombreUsuario");
+            // Helpers
+            const getRawToken = () =>
+                (localStorage.getItem("token") || localStorage.getItem("tokenAdmin") || "")
+                    .replace(/^Bearer\s+/i, "")
+                    .trim();
+
+            const b64urlToStr = (s) => {
+                try {
+                    return atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "="));
+                } catch { return ""; }
+            };
+
+            const getEmailFromJWT = (jwt) => {
+                const parts = jwt.split(".");
+                if (parts.length < 2) return "";
+                try {
+                    const payload = JSON.parse(b64urlToStr(parts[1]) || "{}");
+                    return payload.email || "";
+                } catch { return ""; }
+            };
+
+            let email = localStorage.getItem("userEmail") || "";
+
+            if (!email) {
+                const jwt = getRawToken();
+                if (jwt) {
+                    email = getEmailFromJWT(jwt);
+                    if (email) localStorage.setItem("userEmail", email);
+                }
+            }
+            nombreEl.textContent = email || "Invitado";
+
+        })();
+    </script>
+    <script>
+  (function showAdminSectionIfNeeded() {
+    // Lee posible objeto usuario guardado
+    const rawUser = localStorage.getItem("user") || localStorage.getItem("usuario");
+    const user = rawUser ? JSON.parse(rawUser) : null;
+
+    // Helpers para leer el JWT y el claim de rol
+    const getToken = () =>
+      (localStorage.getItem("token") || localStorage.getItem("tokenAdmin") || "")
+        .replace(/^Bearer\s+/i, "")
+        .trim();
+
+    const b64urlToJson = (p) => {
+      try {
+        const s = p.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(p.length/4)*4, "=");
+        return JSON.parse(atob(s));
+      } catch { return {}; }
+    };
+
+    function getRole() {
+      // 1) si el objeto guardado tiene rol, úsalo
+      if (user?.rol) return String(user.rol).toLowerCase();
+
+      // 2) si no, lee del JWT (ClaimTypes.Role)
+      const token = getToken();
+      if (!token) return "";
+      const parts = token.split(".");
+      if (parts.length < 2) return "";
+      const payload = b64urlToJson(parts[1]);
+
+      // Tu backend usa ClaimTypes.Role:
+      const msRole = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+      const val = payload[msRole] || payload.role || payload.roles;
+      if (!val) return "";
+      return Array.isArray(val) ? String(val[0]).toLowerCase() : String(val).toLowerCase();
+    }
+
+    const isAdmin = getRole() === "admin";
+
+    // Muestra/oculta sección
+    const heading = document.getElementById("adminHeading");
+    const item = document.getElementById("adminMenuItem");
+    if (heading && item) {
+      if (isAdmin) {
+        heading.classList.remove("d-none");
+        item.classList.remove("d-none");
+      } else {
+        // Si prefieres quitarlo del DOM para siempre:
+        // heading.remove(); item.remove();
+        heading.classList.add("d-none");
+        item.classList.add("d-none");
+      }
+    }
+  })();
+</script>
+
+
 </body>
+
 </html>

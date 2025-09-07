@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,129 +10,243 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700,900" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
+
 <body id="page-top">
-<div id="wrapper">
+    <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon"><i class="fas fa-leaf"></i></div>
-            <div class="sidebar-brand-text mx-3">EcoAcción</div>
-        </a>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-fw fa-home"></i><span>Inicio</span></a></li>
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">Participación</div>
-        <li class="nav-item"><a class="nav-link" href="desafios.html"><i class="fas fa-fw fa-seedling"></i><span>Desafíos Disponibles</span></a></li>
-        <li class="nav-item active"><a class="nav-link" href="participaciones.html"><i class="fas fa-fw fa-check"></i><span>Mis Participaciones</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="ranking.html"><i class="fas fa-fw fa-trophy"></i><span>Ranking</span></a></li>
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">Administración</div>
-        <li class="nav-item"><a class="nav-link" href="gestion_usuarios.html"><i class="fas fa-fw fa-users-cog"></i><span>Gestión de Usuarios</span></a></li>
-        <hr class="sidebar-divider d-none d-md-block">
-    </ul>
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon"><i class="fas fa-leaf"></i></div>
+                <div class="sidebar-brand-text mx-3">EcoAcción</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item"><a class="nav-link" href="index.html"><i
+                        class="fas fa-fw fa-home"></i><span>Inicio</span></a></li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">Participación</div>
+            <li class="nav-item"><a class="nav-link" href="desafios.html"><i
+                        class="fas fa-fw fa-seedling"></i><span>Desafíos Disponibles</span></a></li>
+            <li class="nav-item active"><a class="nav-link" href="participaciones.html"><i
+                        class="fas fa-fw fa-check"></i><span>Mis Participaciones</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="ranking.html"><i
+                        class="fas fa-fw fa-trophy"></i><span>Ranking</span></a></li>
+            <div class="sidebar-heading d-none" id="adminHeading">Administración</div>
+            <li class="nav-item d-none" id="adminMenuItem">
+                <a class="nav-link" href="gestion_usuarios.html">
+                    <i class="fas fa-fw fa-users-cog"></i><span>Gestión de Usuarios</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider d-none d-md-block">
+        </ul>
 
-    <!-- Contenido principal -->
-    <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nombreUsuario">Usuario</span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <!-- Contenido principal -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                    id="nombreUsuario">Usuario</span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
 
-            <div class="container-fluid">
-                <h1 class="h3 mb-4 text-gray-800">Mis Participaciones</h1>
+                <div class="container-fluid">
+                    <h1 class="h3 mb-0 text-gray-800">Mis Participaciones</h1>
+                    <button class="btn btn-success" id="btnNuevaPart" data-toggle="modal" data-target="#partModal">
+                        <i class="fas fa-plus mr-1"></i> Nueva participación
+                    </button>
 
-                <!-- Cards de ejemplo -->
-                <div class="row">
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Participaciones Activas</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                  
+                    <!-- Tabla de participaciones -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Detalle de Participaciones</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Título del desafío</th>
+                                            <th>Progreso</th>
+                                            <th>Fecha registro</th>
+                                            <th>Evidencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="part-tbody"></tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Participaciones Completadas</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Puntos Totales</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">150</div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
+            </div>
 
-                <!-- Tabla de participaciones -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Detalle de Participaciones</h6>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto text-center">
+                    <span>EcoAcción &copy; 2025</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <div class="modal fade" id="partModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="formPart">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="partModalTitle">Nueva participación</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Desafío</th>
-                                        <th>Fecha Participación</th>
-                                        <th>Puntos Obtenidos</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Recolecta Botellas</td>
-                                        <td>2025-08-25</td>
-                                        <td>50</td>
-                                        <td>Activo</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Plantar Árboles</td>
-                                        <td>2025-08-20</td>
-                                        <td>100</td>
-                                        <td>Completado</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="modal-body">
+                        <input type="hidden" id="pIdPart">
+                        <input type="hidden" id="pIdUsuario">
+                        <div class="form-group">
+                            <label for="pIdDesafio">ID Desafío</label>
+                            <input type="number" class="form-control" id="pIdDesafio" required min="1" step="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="pTitulo">Título del desafío</label>
+                            <input type="text" class="form-control" id="pTitulo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pProgreso">Progreso</label>
+                            <textarea class="form-control" id="pProgreso" rows="2" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="pFecha">Fecha registro</label>
+                            <input type="datetime-local" class="form-control" id="pFecha" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pEvidencia">Evidencia (imagen, opcional)</label>
+                            <input type="file" class="form-control-file" id="pEvidencia" accept="image/*">
+                            <small class="form-text text-muted">Si estás editando y no seleccionas un archivo, se
+                                mantiene la evidencia actual.</small>
                         </div>
                     </div>
-                </div>
-
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="submit">Guardar</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto text-center">
-                <span>EcoAcción &copy; 2025</span>
-            </div>
-        </footer>
     </div>
-</div>
 
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="js/sb-admin-2.min.js"></script>
-<script>
-    const usuario = JSON.parse(localStorage.getItem("usuario")) || { nombre: "Invitado" };
-    document.getElementById("nombreUsuario").innerText = usuario.nombre;
-</script>
+    
 
-<script src="js/participaciones.js"></script>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script>
+        const usuario = JSON.parse(localStorage.getItem("usuario")) || { nombre: "Invitado" };
+        document.getElementById("nombreUsuario").innerText = usuario.nombre;
+    </script>
+
+    <script src="js/participaciones.js"></script>
+
+    <script>
+        (function initTopbar() {
+            const nombreEl = document.getElementById("nombreUsuario");
+            // Helpers
+            const getRawToken = () =>
+                (localStorage.getItem("token") || localStorage.getItem("tokenAdmin") || "")
+                    .replace(/^Bearer\s+/i, "")
+                    .trim();
+
+            const b64urlToStr = (s) => {
+                try {
+                    return atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "="));
+                } catch { return ""; }
+            };
+
+            const getEmailFromJWT = (jwt) => {
+                const parts = jwt.split(".");
+                if (parts.length < 2) return "";
+                try {
+                    const payload = JSON.parse(b64urlToStr(parts[1]) || "{}");
+                    return payload.email || "";
+                } catch { return ""; }
+            };
+
+            let email = localStorage.getItem("userEmail") || "";
+
+            if (!email) {
+                const jwt = getRawToken();
+                if (jwt) {
+                    email = getEmailFromJWT(jwt);
+                    if (email) localStorage.setItem("userEmail", email);
+                }
+            }
+            nombreEl.textContent = email || "Invitado";
+
+        })();
+    </script>
+    <script>
+        (function showAdminSectionIfNeeded() {
+            // Lee posible objeto usuario guardado
+            const rawUser = localStorage.getItem("user") || localStorage.getItem("usuario");
+            const user = rawUser ? JSON.parse(rawUser) : null;
+
+            // Helpers para leer el JWT y el claim de rol
+            const getToken = () =>
+                (localStorage.getItem("token") || localStorage.getItem("tokenAdmin") || "")
+                    .replace(/^Bearer\s+/i, "")
+                    .trim();
+
+            const b64urlToJson = (p) => {
+                try {
+                    const s = p.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(p.length / 4) * 4, "=");
+                    return JSON.parse(atob(s));
+                } catch { return {}; }
+            };
+
+            function getRole() {
+                // 1) si el objeto guardado tiene rol, úsalo
+                if (user?.rol) return String(user.rol).toLowerCase();
+
+                // 2) si no, lee del JWT (ClaimTypes.Role)
+                const token = getToken();
+                if (!token) return "";
+                const parts = token.split(".");
+                if (parts.length < 2) return "";
+                const payload = b64urlToJson(parts[1]);
+
+                // Tu backend usa ClaimTypes.Role:
+                const msRole = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+                const val = payload[msRole] || payload.role || payload.roles;
+                if (!val) return "";
+                return Array.isArray(val) ? String(val[0]).toLowerCase() : String(val).toLowerCase();
+            }
+
+            const isAdmin = getRole() === "admin";
+
+            // Muestra/oculta sección
+            const heading = document.getElementById("adminHeading");
+            const item = document.getElementById("adminMenuItem");
+            if (heading && item) {
+                if (isAdmin) {
+                    heading.classList.remove("d-none");
+                    item.classList.remove("d-none");
+                } else {
+                    // Si prefieres quitarlo del DOM para siempre:
+                    // heading.remove(); item.remove();
+                    heading.classList.add("d-none");
+                    item.classList.add("d-none");
+                }
+            }
+        })();
+    </script>
 
 </body>
+
 </html>
